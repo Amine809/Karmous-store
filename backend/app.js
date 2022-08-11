@@ -10,8 +10,9 @@ app.use(express.json());
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(cookieParser())
 app.use(fileUpload())
-const dotenv=require('dotenv')
-dotenv.config({path:'backend/config/config.env'})
+//const dotenv=require('dotenv')
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
+//dotenv.config({path:'backend/config/config.env'})
 
 //import all routes
 const products=require('./routes/product')
